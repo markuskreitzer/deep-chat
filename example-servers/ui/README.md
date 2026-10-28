@@ -27,3 +27,7 @@ npm run start
 ### :wrench: Improvements
 
 If you are experiencing issues with this project or have suggestions on how to improve it, do not hesitate to create a new ticket in [Github issues](https://github.com/OvidijusParsiunas/deep-chat/issues) and we will look into it as soon as possible.
+
+### Build tooling
+
+This example uses Vite instead of the retired Create React App toolchain. Use Node.js 22.12 or newer, `npm install`, `npm start`, and `npm run build`. The production output is `dist/`; `npm run preview` serves it locally. The chat endpoints still require a separately configured example server.

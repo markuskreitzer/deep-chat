@@ -1,11 +1,11 @@
 import {NextRequest, NextResponse} from 'next/server';
 
-type CallbackFunc = (req: NextRequest, res: NextResponse) => Promise<NextResponse<Response>> | Promise<Response>;
+type CallbackFunc = (req: NextRequest) => Promise<NextResponse<Response>> | Promise<Response>;
 
 export default function errorHandler(callbacFunc: CallbackFunc) {
-  return async (req: NextRequest, res: NextResponse) => {
+  return async (req: NextRequest) => {
     try {
-      return await callbacFunc(req, res);
+      return await callbacFunc(req);
     } catch (error) {
       console.error('API Error:', error);
       // Sends response back to Deep Chat using the Response format:

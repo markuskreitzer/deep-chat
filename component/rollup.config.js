@@ -1,7 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
-import summary from 'rollup-plugin-summary';
-import {terser} from 'rollup-plugin-terser';
+import {summary} from 'rollup-plugin-summary';
+import terser from '@rollup/plugin-terser';
 
 export default {
   input: 'dist/deepChat.js',
@@ -20,7 +20,6 @@ export default {
     terser({
       ecma: 2017,
       module: true,
-      warnings: true,
       mangle: {
         properties: {
           regex: /^__/,

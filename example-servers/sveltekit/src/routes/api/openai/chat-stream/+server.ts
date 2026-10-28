@@ -1,5 +1,5 @@
 import type {DeepChatOpenAITextRequestBody} from '../../../types/deepChatTextRequestBody';
-import type {OpenAIConverseResult} from 'deep-chat/dist/types/openAIResult';
+import type {OpenAICompletionsResult} from 'deep-chat/dist/types/openAIResult';
 import type {ParsedEvent, ReconnectInterval} from 'eventsource-parser';
 import {createReqChatBody} from '../../../utils/openAIChatBody';
 import type {RequestHandler} from '@sveltejs/kit';
@@ -32,7 +32,7 @@ export const POST: RequestHandler = async ({request}) => {
   });
 
   if (!result.ok) {
-    const openAIResult = (await result.json()) as OpenAIConverseResult;
+    const openAIResult = (await result.json()) as OpenAICompletionsResult;
     throw openAIResult.error?.message || 'Stream error';
   }
 
@@ -66,7 +66,7 @@ export const POST: RequestHandler = async ({request}) => {
         controller.terminate(); // Terminate the TransformStream
         return;
       }
-      const result = JSON.parse(content) as OpenAIConverseResult;
+      const result = JSON.parse(content) as OpenAICompletionsResult;
       if (result.choices[0].delta?.content) {
         // Sends response back to Deep Chat using the Response format:
         // https://deepchat.dev/docs/connect/#Response

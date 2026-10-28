@@ -9,7 +9,6 @@
   "author": "OvidijusParsiunas",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.88.2",
     "ws": "^8.16.0"
   },
   "devDependencies": {

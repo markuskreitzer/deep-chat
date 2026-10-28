@@ -1,5 +1,5 @@
 import type {DeepChatOpenAITextRequestBody} from '../../../types/deepChatTextRequestBody';
-import type {OpenAIConverseResult} from 'deep-chat/dist/types/openAIResult';
+import type {OpenAICompletionsResult} from 'deep-chat/dist/types/openAIResult';
 import {createReqChatBody} from '../../../utils/openAIChatBody';
 import type {RequestHandler} from '@sveltejs/kit';
 
@@ -26,7 +26,7 @@ export const POST: RequestHandler = async ({request}) => {
     body: JSON.stringify(chatBody),
   });
 
-  const openAIResult = (await result.json()) as OpenAIConverseResult;
+  const openAIResult = (await result.json()) as OpenAICompletionsResult;
   if (openAIResult.error) throw openAIResult.error.message;
   // Sends response back to Deep Chat using the Response format:
   // https://deepchat.dev/docs/connect/#Response

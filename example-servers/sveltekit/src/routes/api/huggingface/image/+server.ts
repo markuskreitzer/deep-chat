@@ -27,7 +27,7 @@ export const POST: RequestHandler = async ({request}) => {
   if (huggingFaceResult.error) throw huggingFaceResult.error;
   // Sends response back to Deep Chat using the Response format:
   // https://deepchat.dev/docs/connect/#Response
-  return new Response(JSON.stringify({text: huggingFaceResult[0].label}), {
+  return new Response(JSON.stringify({text: huggingFaceResult[0]?.label || ''}), {
     headers: {
       'content-type': 'application/json',
     },
